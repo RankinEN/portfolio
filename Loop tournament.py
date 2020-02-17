@@ -5,7 +5,7 @@
 import random
 
 #def statments
-def teams():
+def teams(): #this function will take in the input for team names and create a list with those names on it.
     team_list = []
     teamAdded = ""
     while teamAdded != "x":
@@ -17,7 +17,7 @@ def teams():
     print("Now on to the Matches!")
     return(team_list)
 
-def roster(teamList):
+def roster(teamList): #this function takes th list in Teams, and creates matchups at random between two named teams.
     global winners
     list_length = len(teamList)
     matchups = []
@@ -30,13 +30,15 @@ def roster(teamList):
         team_two = teamList.pop(selection)
         list_length = len(teamList)
         matchups.append(team_one + " vs " + team_two)
-        winners.append(isWinner(team_one, team_two))
+        winners.append(isWinner(team_one, team_two)) #calls isWinner and appends the result to the global variable winners
     return(matchups)
 
-def isWinner(teamOne, teamTwo):
+def isWinner(teamOne, teamTwo): #takes a matchup and then requests variable information which it then uses to determine the winner of a fight.
     print("On a scale of 1 to 10, the average age of", teamOne, "is:")
+    #the fiction project deals with semi-immortals so the ages can be wildly different and will play a fairly large role in who wins.
     mod1_1 = int(input())
     print("On a scale of 1 to 10, the average fighting experince of", teamOne, "is:")
+    #different semi-immortals have very different day-to-day lives so some will have only some experience fighting and others will have enormous experience.
     mod1_2 = int(input())
     print("On a scale of 1 to 10, the average age of", teamTwo, "is:")
     mod2_1 = int(input())
@@ -45,7 +47,7 @@ def isWinner(teamOne, teamTwo):
     global winner
     winner = ""
     print("This match is", teamOne, "VS", teamTwo + "!")
-    scoreOne = (mod1_1 * mod1_2) + random.randint(1,100)
+    scoreOne = (mod1_1 * mod1_2) + random.randint(1,100) #scores are determined by multiplying the two variables and then adding the result to the random number rolled.
     scoreTwo = (mod2_1 * mod2_2) + random.randint(1,100)
     print(teamOne, "scored ", scoreOne, "points.")
     print(teamTwo, "scored", scoreTwo, "points.")
